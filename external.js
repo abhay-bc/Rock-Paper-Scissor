@@ -2,22 +2,17 @@
 let playerWinCount = 0;
 // not a player (nap)
 let napWinCount = 0;
-
-    // let playerChoice = prompt("Your Choice:");
-    
-    
-    let playerChoice;
-    let computerChoice = getComputerChoice();
+        
+let playerChoice;
+let computerChoice;
 
 const userSel = document.querySelectorAll('.user-sel');
-
-console.log(userSel);
 
     for(let i = 0; i < userSel.length; i++){
         userSel[i].addEventListener('click', ()=> {
             playerChoice = userSel[i].innerText;
             playerChoice = playerChoice.toLowerCase();
-            console.log(playerChoice);
+            computerChoice = getComputerChoice();
             playRound(playerChoice, computerChoice);
         })
     }
@@ -29,6 +24,7 @@ console.log(userSel);
 
     // console.log("Refresh Your page to play again...");
 
+const displayResult = document.querySelector(".display-result");
 
 function random(){
     res = Math.floor(Math.random() * 3);
@@ -54,47 +50,48 @@ function getComputerChoice() {
 }
 
 function playRound( player, computer){
+    let display;
     if(player === 'rock'){
         switch(computer){
         case "paper":
-            console.log('You Lose! Paper beats Rock')
+            display = 'You Lose! Paper beats Rock';
             napWinCount++
             break;
         case "scissor":
-            console.log("You Win! Rock beats Scissor")
+            display = "You Win! Rock beats Scissor";
             playerWinCount++
             break;
         default:
-            console.log("Its tie...")
+            display = "Its tie...";
         }
     } else if (player === "paper") {
         switch(computer){
             case "scissor":
-                console.log('You Lose! Scissor beats Paper')
+                display = 'You Lose! Scissor beats Paper';
                 napWinCount++
                 break;
             case "rock":
-                console.log("You Win! Paper beats Rock")
+                display = "You Win! Paper beats Rock";
                 playerWinCount++
                 break;
             default:
-                console.log("Its tie...")
+                display = "Its tie...";
         }
     } else if (player === "scissor") {
         switch(computer){
             case "rock":
-                console.log('You Lose! Rock beats Scissor')
+                display = 'You Lose! Rock beats Scissor';
                 napWinCount++
                 break;
             case "paper":
-                console.log("You Win! Scissor beats Paper")
+                display = "You Win! Scissor beats Paper";
                 playerWinCount++
                 break;
             default:
-                console.log("Its tie...")
+                display = "Its tie...";
             }
         } else{
-            console.log('invalid selection')
+            display = 'invalid selection';
         }
+        displayResult.innerText = display;
     }
-
