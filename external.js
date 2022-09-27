@@ -3,23 +3,20 @@ let playerWinCount = 0;
 // not a player (nap)
 let napWinCount = 0;
 
-
-for (let i = 1; i <= 5; i++){
-
     let playerChoice = prompt("Your Choice:");
     playerChoice = playerChoice.toLowerCase();
 
     let computerChoice = getComputerChoice();
 
     playRound(playerChoice, computerChoice);
-}
 
-let finalResult = playerWinCount > napWinCount
 
-    finalResult ? console.log("Congratulation! You were Awesome") 
-    : console.log('Better luck Next time!!!');
+//let finalResult = playerWinCount > napWinCount
 
-    console.log("Refresh Your page to play again...");
+  //  finalResult ? console.log("Congratulation! You were Awesome") 
+//   : console.log('Better luck Next time!!!');
+
+// console.log("Refresh Your page to play again...");
 
 
 function random(){
