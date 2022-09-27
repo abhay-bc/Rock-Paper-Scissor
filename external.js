@@ -1,7 +1,10 @@
 
 let playerWinCount = 0;
+let playerCounter = document.querySelector('.player-points');
+
 // not a player (nap)
 let napWinCount = 0;
+let napCounter = document.querySelector('.computer-points');
         
 let playerChoice;
 let computerChoice;
@@ -10,19 +13,12 @@ const userSel = document.querySelectorAll('.user-sel');
 
     for(let i = 0; i < userSel.length; i++){
         userSel[i].addEventListener('click', ()=> {
-            playerChoice = userSel[i].innerText;
-            playerChoice = playerChoice.toLowerCase();
+            playerChoice = userSel[i].innerText.toLowerCase();
             computerChoice = getComputerChoice();
             playRound(playerChoice, computerChoice);
+
         })
     }
-
-    // let finalResult = playerWinCount > napWinCount
-
-    // finalResult ? console.log("Congratulation! You were Awesome") 
-    // : console.log('Better luck Next time!!!');
-
-    // console.log("Refresh Your page to play again...");
 
 const displayResult = document.querySelector(".display-result");
 
@@ -94,4 +90,33 @@ function playRound( player, computer){
             display = 'invalid selection';
         }
         displayResult.innerText = display;
+
+        playerCounter.innerText = `You: ${playerWinCount}`;
+        napCounter.innerText = `Yuta: ${napWinCount}`;
+
+        if(napWinCount === 5 || playerWinCount === 5) {
+            finalResult(playerWinCount, napWinCount);
+        }
     }
+const resultDisplay = document.querySelector('.finalResult');
+
+    function finalResult(player, computer) {
+        for (let i = 0; i < 10000000; i++) {}
+        let Result;
+        if(player === 5) {
+            Result = "Congratulation! You were Awesome";
+        }
+        if(computer === 5) {
+            Result = 'Better luck Next time!!!';
+        }
+        resultDisplay.innerText = Result;
+        for(let i = 0; i < userSel.length; i++){
+            userSel[i].removeEventListener();
+            }
+        }
+
+    
+
+    
+
+    
