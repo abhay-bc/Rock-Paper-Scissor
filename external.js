@@ -3,20 +3,31 @@ let playerWinCount = 0;
 // not a player (nap)
 let napWinCount = 0;
 
-    let playerChoice = prompt("Your Choice:");
-    playerChoice = playerChoice.toLowerCase();
-
+    // let playerChoice = prompt("Your Choice:");
+    
+    
+    let playerChoice;
     let computerChoice = getComputerChoice();
 
-    playRound(playerChoice, computerChoice);
+const userSel = document.querySelectorAll('.user-sel');
 
+console.log(userSel);
 
-//let finalResult = playerWinCount > napWinCount
+    for(let i = 0; i < userSel.length; i++){
+        userSel[i].addEventListener('click', ()=> {
+            playerChoice = userSel[i].innerText;
+            playerChoice = playerChoice.toLowerCase();
+            console.log(playerChoice);
+            playRound(playerChoice, computerChoice);
+        })
+    }
 
-  //  finalResult ? console.log("Congratulation! You were Awesome") 
-//   : console.log('Better luck Next time!!!');
+    // let finalResult = playerWinCount > napWinCount
 
-// console.log("Refresh Your page to play again...");
+    // finalResult ? console.log("Congratulation! You were Awesome") 
+    // : console.log('Better luck Next time!!!');
+
+    // console.log("Refresh Your page to play again...");
 
 
 function random(){
